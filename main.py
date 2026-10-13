@@ -17,6 +17,16 @@ def detect_holiday(coun, dat):
             return "yes"
         elif dat not in rusl:
             return "no"
+    if coun == "usa" or "united states" or "united states of america":
+        if dat in usal:
+            return "yes"
+        elif dat not in usal:
+            return "no"
+    if coun == "canada":
+        if dat in canl:
+            return "yes"
+        elif dat not in canl:
+            return "no"
             
 
 @app.get("/")
@@ -30,5 +40,5 @@ def read_item(item_id: int, q: str | None = None):
 
 @app.get("istodayfed")
 def read_item(country: str, date: int  | None = None):
-    yenof = detect_holiday(country)
-    return {"isit": yenof, }
+    yenof = detect_holiday(country, date)
+    return {"isit": yenof}

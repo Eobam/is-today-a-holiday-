@@ -9,10 +9,15 @@ indl = [126, 815, 102]
 
 canl = [11, 518, 71, 97, 930, 112, 1011, 1225, 1226]
 
-rusl = [11, 17, 223, 38, 51, 59, 612, 114 ]
+rusl = [11, 17, 223, 38, 51, 59, 612, 114]
 
-def detect_holiday(country):
-
+def detect_holiday(coun, dat):
+    if coun == "russia":
+        if dat in rusl:
+            return "yes"
+        elif dat not in rusl:
+            return "no"
+            
 
 @app.get("/")
 def read_root():
@@ -25,4 +30,5 @@ def read_item(item_id: int, q: str | None = None):
 
 @app.get("istodayfed")
 def read_item(country: str, date: int  | None = None):
-    return {}
+    yenof = detect_holiday(country)
+    return {"isit": yenof, }

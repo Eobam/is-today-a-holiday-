@@ -17,7 +17,7 @@ def detect_holiday(coun, dat):
             return "yes"
         elif dat not in rusl:
             return "no"
-    if coun == "usa" or "united states" or "united states of america":
+    if coun in ("usa", "united states", "united states of america"):
         if dat in usal:
             return "yes"
         elif dat not in usal:
@@ -38,7 +38,7 @@ def read_root():
 def read_item(item_id: int, q: str | None = None):
     return {"item_id": item_id, "q": q}
 
-@app.get("istodayfed")
-def read_item(country: str, date: int  | None = None):
+@app.get("/istodayfed")
+def check_fed(country: str, date: int):
     yenof = detect_holiday(country, date)
     return {"isit": yenof}

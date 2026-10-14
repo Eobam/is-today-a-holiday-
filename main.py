@@ -11,6 +11,8 @@ canl = [11, 518, 71, 97, 930, 112, 1011, 1225, 1226]
 
 rusl = [11, 17, 223, 38, 51, 59, 612, 114]
 
+ukl = [11, 326, 329, 53, 531, 830, 1225, 1227, 1228]
+
 def detect_holiday(coun, dat):
     if coun == "russia":
         if dat in rusl:
@@ -27,7 +29,16 @@ def detect_holiday(coun, dat):
             return "yes"
         elif dat not in canl:
             return "no"
-            
+    if coun == "india":
+        if dat in indl:
+            return "yes"
+        elif dat not in indl:
+            return "no"
+    if coun == ("united kingdom", "uk"):
+        if dat in ukl:
+            return "yes"
+        elif dat not in ukl:
+            return "yes"            
 
 @app.get("/")
 def read_root():

@@ -13,6 +13,8 @@ rusl = [11, 17, 223, 38, 51, 59, 612, 114]
 
 ukl = [11, 326, 329, 53, 531, 830, 1225, 1227, 1228]
 
+grml = [11, 5]
+
 def detect_holiday(coun, dat):
     if coun == "russia":
         if dat in rusl:
